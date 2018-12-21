@@ -14,7 +14,6 @@ public class consumer {
     public static void main(String[] args) throws Exception {
 
         String[] arg = {"Mutilbroker", "Hello-Kafka"};
-        String topicName = arg[0];
         Properties props = new Properties();
 
         props.put("bootstrap.servers", "localhost:9092");
@@ -29,7 +28,7 @@ public class consumer {
         KafkaConsumer<String, String> consumer = new KafkaConsumer
                 <String, String>(props);
 
-        consumer.subscribe(Arrays.asList(topicName));
+        consumer.subscribe(Arrays.asList(arg));
 
         int i = 0;
 
@@ -40,7 +39,7 @@ public class consumer {
                 // print the offset,key and value for the consumer records.
 //                System.out.printf("offset = %d, key = %s, value = %s\n",
 //                        record.offset(), record.key(), record.value());
-                System.out.println("offset:"+record.offset() +"key:"+record.key() +"value"+ record.value());
+                    System.out.println("offset:"+record.offset() +"key:"+record.key() +"value"+ record.value());
             }
         }
     }
