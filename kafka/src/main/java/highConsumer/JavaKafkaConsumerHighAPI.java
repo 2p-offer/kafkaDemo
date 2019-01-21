@@ -6,6 +6,8 @@ import kafka.message.MessageAndMetadata;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,6 +121,18 @@ public class JavaKafkaConsumerHighAPI implements Runnable {
      * @return Kafka连接信息
      */
     private ConsumerConfig createConsumerConfig(String zookeeper, String groupId) {
+        //瞎写的,不可信
+//        Properties prop = new Properties();
+//        File file = new File("/tmp");
+//        FileInputStream inputStream = null;
+//        try {
+//            inputStream = new FileInputStream(file);
+//            prop.load(inputStream);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
         // 1. 构建属性对象
         Properties prop = new Properties();
         // 2. 添加相关属性

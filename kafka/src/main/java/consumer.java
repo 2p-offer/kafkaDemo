@@ -18,7 +18,7 @@ public class consumer {
 
         props.put("bootstrap.servers", "localhost:9092");
         props.put("group.id", "test");
-        props.put("enable.auto.commit", "true");
+        props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer",
@@ -29,7 +29,7 @@ public class consumer {
                 <String, String>(props);
 
         consumer.subscribe(Arrays.asList(arg));
-
+//        consumer.commitSync();
         int i = 0;
 
         while (true) {
@@ -39,7 +39,10 @@ public class consumer {
                 // print the offset,key and value for the consumer records.
 //                System.out.printf("offset = %d, key = %s, value = %s\n",
 //                        record.offset(), record.key(), record.value());
-                    System.out.println("offset:"+record.offset() +"key:"+record.key() +"value"+ record.value());
+
+
+                consumer.commitSync();
+                System.out.println("offset:"+record.offset() +"key:"+record.key() +"value"+ record.value());
             }
         }
     }
